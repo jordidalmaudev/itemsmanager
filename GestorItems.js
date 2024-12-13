@@ -15,6 +15,6 @@ class GestorItems {
     }
 
     guardarItems(){
-        localStorage.setItem("items", )
+        localStorage.setItem("items", JSON.stringify(items));
     }
 }
