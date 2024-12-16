@@ -4,7 +4,7 @@ class ItemVisual extends Item{
     urlImatge = "";
 
     constructor(urlImatge){
-        super()
+        super(nom) // reellenar parametros padre
         this.urlImatge = urlImatge;
     }
 
