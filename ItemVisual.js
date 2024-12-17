@@ -7,6 +7,4 @@ export class ItemVisual extends Item{
         super(id, nom, descripcio, dataCreacio, dataModificacio);
         this.urlImatge = urlImatge;
     }
-
-    
 }

@@ -37,5 +37,13 @@ export class Item {
         let data = new Date().toLocaleString();
         return data;
     }
+
+    render(){
+    }
+    
+    append(element){
+        return element.innerHTML += this.render();
+    }
+
 }
 
