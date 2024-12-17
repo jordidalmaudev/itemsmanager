@@ -12,7 +12,7 @@ export class Item {
      * @param {Date} dataCreacio 
      * @param {Date} dataModificacio
      */
-    constructor(id, nom, descripcio, dataCreacio = new Date().toLocaleString(), dataModificacio = new Date().toLocaleString()) {
+    constructor(id = this.generadorId(), nom, descripcio, dataCreacio = this.generadorData(), dataModificacio = this.generadorData()) {
         this.id = id; 
         this.nom = nom;
         this.descripcio = descripcio;
@@ -20,6 +20,22 @@ export class Item {
         this.dataModificacio = dataModificacio;
     }
 
+     /**
+     * 
+     * @returns {string} id
+     */
+     generadorId() {
+        const id = Date.now() + '-' + Math.floor(Math.random() * 1000);
+        return id;
+    }
     
+    /**
+     * 
+     * @returns {Date} data
+     */
+    generadorData() {
+        let data = new Date().toLocaleString();
+        return data;
+    }
 }
 

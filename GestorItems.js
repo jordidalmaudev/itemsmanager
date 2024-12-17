@@ -7,23 +7,14 @@ class GestorItems {
         this.items = JSON.parse(localStorage.getItem("items")) || [];
     }
 
-    /**
-     * 
-     * @returns {string} id
-     */
-    generadorId() {
-        const id = Date.now() + '-' + Math.floor(Math.random() * 1000);
-        return id;
-    }
-
     afegirItems(itemNou) {
         this.items.push(itemNou);
         this.guardarItems();
     }
 
-    eliminarItems(idItem) {
+    eliminarItems(nomItem) {
         //eliminamos en memoria
-        let nouArray = items.filter(item => item !== idItem);
+        let nouArray = items.filter(item => item.nom !== nomItem);
         this.items = nouArray;
         // guardamos en localstorage la data actualizada (eliminado)
         this.guardarItems();
@@ -36,7 +27,7 @@ class GestorItems {
      */
     modificarItems(nomItem, novesDades){
        let indice = this.items.findIndex((item)=> item === nomItem);
-       console.log(indice); 
+       
     }
 
     guardarItems(){
