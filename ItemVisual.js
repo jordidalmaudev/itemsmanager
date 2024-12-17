@@ -1,10 +1,10 @@
-import { Item } from "./Item";
+import { Item } from "./Item.js";
 
-class ItemVisual extends Item{
+export class ItemVisual extends Item{
     urlImatge = "";
 
     constructor(urlImatge){
-        super(nom) // reellenar parametros padre
+        super(id, nom, descripcio, dataCreacio, dataModificacio);
         this.urlImatge = urlImatge;
     }
 
