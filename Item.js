@@ -12,7 +12,7 @@ export class Item {
      * @param {Date} dataCreacio 
      * @param {Date} dataModificacio
      */
-    constructor(id = this.generadorId(), nom, descripcio, dataCreacio = this.generadorData(), dataModificacio = this.generadorData()) {
+    constructor({id = this.generadorId(), nom = "", descripcio = "", dataCreacio = this.generadorData(), dataModificacio = this.generadorData()}) {
         this.id = id; 
         this.nom = nom;
         this.descripcio = descripcio;

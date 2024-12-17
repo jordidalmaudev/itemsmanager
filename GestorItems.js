@@ -23,11 +23,19 @@ class GestorItems {
     /**
      * 
      * @param {string} nomItem 
-     * @param {Object} novesDades 
+     * @param {Object} novesDades
      */
     modificarItems(nomItem, novesDades){
-       let indice = this.items.findIndex((item)=> item === nomItem);
-       
+       let i = this.items.findIndex((item)=> item === nomItem);
+       if (i >= 0) {
+        if (novesDades.nom) this.items[index].nom = novesDades.nom;
+            if (novesDades.descripcio) this.items[index].descripcio = novesDades.descripcio;
+            this.items[index].dataModificacio = new Date();
+            this.guardarItems();
+            console.log(`Item modificat:`, this.items[index]);
+        } else {
+            console.log(`Item amb nom "${nom}" no trobat.`);
+        }
     }
 
     guardarItems(){
@@ -41,10 +49,5 @@ class GestorItems {
 
 let newItem = new GestorItems()
 
-let pcgaming = newItem.afegirItems(new Item(newItem.generadorId(), "PC", "Ordinador gaming"))
+let pcgaming = newItem.afegirItems(new Item({nom: "PC", descripcio: "Pc del tipus gaming"}))
 console.log(pcgaming);
-//enseñar items
-console.log(newItem.items);
-//eliminar items
-newItem.eliminarItems(pcgaming);
-
