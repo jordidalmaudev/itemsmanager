@@ -1,6 +1,4 @@
-import { Item } from "./Item.js";
-
-class GestorItems {
+export class GestorItems {
     items = []
 
     constructor() {
@@ -42,25 +40,12 @@ class GestorItems {
         localStorage.setItem("items", JSON.stringify(this.items));
     }
 
-    renderItems() {
-        let items = JSON.parse(localStorage.getItem("items"));
-        let div = document.getElementById("items");
-
-    }
 
     // renderizar item en el html id items desde el localstorag
     renderItems() {
         let items = JSON.parse(localStorage.getItem("items"));
         let table = document.getElementById("items");
-        table.innerHTML = `
-            <tr>
-                <th>Nom</th>
-                <th>Descripció</th>
-                <th>Data Creació</th>
-                <th>Data Modificació</th>
-            </tr>
-        `;
-
+    
         items.forEach(item => {
             table.innerHTML += `
                 <tr>
@@ -73,13 +58,3 @@ class GestorItems {
         });
     }
 }
-
-let newItem = new GestorItems()
-
-let pcgaming = newItem.afegirItems(new Item({ nom: "PC Gaming", descripcio: "Pc del tipus gaming" }));
-let pcnormal = newItem.afegirItems(new Item({ nom: "PC Normal", descripcio: "Pc del tipus normal" }));
-let pcportatil = newItem.afegirItems(new Item({ nom: "PC Portatil", descripcio: "Pc del tipus portatil" }));
-newItem.renderItems();
-console.log(pcgaming);
-console.log(pcnormal);
-console.log(pcportatil);
