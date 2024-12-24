@@ -40,8 +40,7 @@ export class GestorItems {
         localStorage.setItem("items", JSON.stringify(this.items));
     }
 
-
-    // renderizar item en el html id items desde el localstorag
+    // renderizar item en el html id items desde el localstorage
     renderItems() {
         let items = JSON.parse(localStorage.getItem("items"));
         let table = document.getElementById("items");
@@ -53,6 +52,7 @@ export class GestorItems {
                     <td>${item.descripcio}</td>
                     <td>${item.datacreacio}</td>
                     <td>${item.dataModificacio || ''}</td>
+                    <td><a onclick="this.modificarItems(item.nom, item)">Editar</a> - <a onclick="this.eliminarItems(item.nom)">Eliminar</a></td>
                 </tr>
             `;
         });
