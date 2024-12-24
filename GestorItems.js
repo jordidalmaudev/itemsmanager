@@ -19,10 +19,10 @@ export class GestorItems {
     }
 
     /**
-     * 
-     * @param {string} nomItem 
-     * @param {Object} novesDades
-     */
+    * 
+    * @param {string} nomItem 
+    * @param {Object} novesDades
+    */
     modificarItems(nomItem, novesDades) {
         let i = this.items.findIndex((item) => item === nomItem);
         if (i !== -1) {
