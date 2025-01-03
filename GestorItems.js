@@ -1,5 +1,6 @@
 export class GestorItems {
     items = []
+    noImg = "./img/noImg.webp";
 
     constructor() {
         this.items = JSON.parse(localStorage.getItem("items")) || [];
@@ -20,7 +21,7 @@ export class GestorItems {
 
     /**
     * 
-    * @param {string} nomItem 
+    * @param {string} nomItem
     * @param {Object} novesDades
     */
     modificarItems(nomItem, novesDades) {
@@ -44,17 +45,21 @@ export class GestorItems {
     renderItems() {
         let items = JSON.parse(localStorage.getItem("items"));
         let table = document.getElementById("items");
-    
+
         items.forEach(item => {
-            table.innerHTML += `
+            table.innerHTML += ` 
                 <tr>
+                    <td>
+                    <img src="${item.urlImage || this.noImg}" width="100" height="100">
+                    </td>
                     <td>${item.nom}</td>
                     <td>${item.descripcio}</td>
-                    <td>${item.datacreacio}</td>
+                    <td>${item.dataCreacio}</td>
                     <td>${item.dataModificacio || ''}</td>
-                    <td><a onclick="this.modificarItems(item.nom, item)">Editar</a> - <a onclick="this.eliminarItems(item.nom)">Eliminar</a></td>
+                    <td><a >Editar</a> - <a >Eliminar</a></td>
                 </tr>
             `;
         });
     }
+// onclick="${this.modificarItems(item.nom, item)}"  onclick="${this.eliminarItems(item.nom)}"
 }

@@ -12,12 +12,12 @@ export class Item {
      * @param {Date} dataCreacio 
      * @param {Date} dataModificacio
      */
-    constructor({id = this.generadorId(), nom = "", descripcio = "", dataCreacio = this.generadorData(), dataModificacio = this.generadorData()}) {
-        this.id = id; 
+    constructor(nom = "", descripcio = "") {
+        this.id = this.generadorId(); 
         this.nom = nom;
         this.descripcio = descripcio;
-        this.dataCreacio = dataCreacio;
-        this.dataModificacio = dataModificacio;
+        this.dataCreacio = this.generadorData();
+        this.dataModificacio = this.generadorData();
     }
 
      /**
@@ -44,6 +44,4 @@ export class Item {
     append(element){
         return element.innerHTML += this.render();
     }
-
 }
-
