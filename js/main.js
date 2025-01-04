@@ -9,10 +9,10 @@ newItem.afegirItems(pcgaming);
 let pcnormal = new Item("PC Normal", "Pc del tipus normal");
 newItem.afegirItems(pcnormal);
 
-let pcw = new ItemVisual("PC Workstation", "Pc del tipus workstation", "./img/worstation.webp")
+let pcw = new ItemVisual("PC Workstation", "Pc del tipus workstation", "./img/worstation.webp");
 newItem.afegirItems(pcw);
 
-let pcw2 = new ItemVisual()
+let pcw2 = new ItemVisual();
 newItem.afegirItems(pcw2);
 
 newItem.renderItems();
