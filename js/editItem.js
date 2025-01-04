@@ -1,9 +1,9 @@
-import { GestorItems } from './GestorItems.js';
+import { GestorItems } from '../classes/GestorItems.js';
 
 let gestor = new GestorItems();
 
 document.getElementById('cancelar').addEventListener('click', function() {
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
             dataModificacio: new Date().toLocaleString()
         };
         gestor.modificarItems(item.id, novesDades);
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     });
 });

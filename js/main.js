@@ -1,6 +1,6 @@
-import { GestorItems } from "./GestorItems.js";  
-import { Item } from "./Item.js";
-import { ItemVisual } from "./ItemVisual.js";
+import { GestorItems } from "../classes/GestorItems.js";  
+import { Item } from "../classes/Item.js";
+import { ItemVisual } from "../classes/ItemVisual.js";
 
 let newItem = new GestorItems();
 
