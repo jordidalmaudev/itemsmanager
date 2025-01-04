@@ -13,21 +13,7 @@
         <input type="text" id="descripcio" name="descripcio"><br>
         <button type="submit">Guardar</button>
     </form>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let item = JSON.parse(localStorage.getItem('itemAEditar'));
-            if (item) {
-                document.getElementById('nom').value = item.nom;
-                document.getElementById('descripcio').value = item.descripcio;
-            }
-
-            document.getElementById('formEditarItem').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Aquí puedes agregar el código para guardar los cambios
-                // y actualizar el item en el localStorage o enviarlo al servidor
-            });
-        });
-    </script>
+    <button id="cancelar">Cancelar</button>
+    <script type="module" src="./editItem.js"></script>
 </body>
 </html>

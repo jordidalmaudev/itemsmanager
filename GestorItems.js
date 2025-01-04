@@ -21,19 +21,19 @@ export class GestorItems {
 
     /**
     * 
-    * @param {string} nomItem
+    * @param {string} id
     * @param {Object} novesDades
     */
-    modificarItems(nomItem, novesDades) {
-        let i = this.items.findIndex((item) => item === nomItem);
+    modificarItems(id, novesDades) {
+        let i = this.items.findIndex((item) => item.id === id);
         if (i !== -1) {
             if (novesDades.nom) this.items[i].nom = novesDades.nom;
             if (novesDades.descripcio) this.items[i].descripcio = novesDades.descripcio;
-            this.items[i].dataModificacio = new Date().toLocaleString();
+            if (novesDades.dataModificacio) this.items[i].dataModificacio = novesDades.dataModificacio;
             this.guardarItems();
             console.log(`Item modificat:`, this.items[i]);
         } else {
-            console.log(`Item amb nom "${nomItem}" no trobat.`);
+            console.log(`Item amb la id "${id}" no trobat.`);
         }
     }
 
@@ -69,7 +69,7 @@ export class GestorItems {
                     <button class="delete-btn">${item.id}</button>
                 </td>
             `;
-            table.appendChild(row);
+            table?.appendChild(row);
 
             // Agregar event listeners a los botones
             row.querySelector('.edit-btn').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
