@@ -33,7 +33,7 @@ export class GestorItems {
             this.guardarItems();
             console.log(`Item modificat:`, this.items[i]);
         } else {
-            console.log(`Item amb nom "${nom}" no trobat.`);
+            console.log(`Item amb nom "${nomItem}" no trobat.`);
         }
     }
 
@@ -41,25 +41,42 @@ export class GestorItems {
         localStorage.setItem("items", JSON.stringify(this.items));
     }
 
+    guardarItemYRedirigir(itemId) {
+        console.log("aaa");
+        
+        let item = this.items.find(item => item.id === itemId);
+        localStorage.setItem('itemAEditar', JSON.stringify(item));
+        window.location.href = './editItem.html';
+    }
+
     // renderizar item en el html id items desde el localstorage
     renderItems() {
         let items = JSON.parse(localStorage.getItem("items"));
         let table = document.getElementById("items");
 
-        items.forEach(item => {
-            table.innerHTML += ` 
-                <tr>
-                    <td>
+        items?.forEach(item => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
                     <img src="${item.urlImage || this.noImg}" width="100" height="100">
-                    </td>
-                    <td>${item.nom}</td>
-                    <td>${item.descripcio}</td>
-                    <td>${item.dataCreacio}</td>
-                    <td>${item.dataModificacio || ''}</td>
-                    <td><a >Editar</a> - <a >Eliminar</a></td>
-                </tr>
+                </td>
+                <td>${item.nom}</td>
+                <td>${item.descripcio}</td>
+                <td>${item.dataCreacio}</td>
+                <td>${item.dataModificacio || ''}</td>
+                <td>
+                    <button class="edit-btn">Editar</button>
+                    <button class="delete-btn">${item.id}</button>
+                </td>
             `;
+            table.appendChild(row);
+
+            // Agregar event listeners a los botones
+            row.querySelector('.edit-btn').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
+            row.querySelector('.delete-btn').addEventListener('click', () => this.eliminarItem(item.id));
         });
     }
-// onclick="${this.modificarItems(item.nom, item)}"  onclick="${this.eliminarItems(item.nom)}"
 }
+
+const gestor = new GestorItems();
+gestor.renderItems();

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Item</title>
+</head>
+<body>
+    <form id="formEditarItem">
+        <label for="nom">Nombre:</label>
+        <input type="text" id="nom" name="nom"><br>
+        <label for="descripcio">Descripción:</label>
+        <input type="text" id="descripcio" name="descripcio"><br>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let item = JSON.parse(localStorage.getItem('itemAEditar'));
+            if (item) {
+                document.getElementById('nom').value = item.nom;
+                document.getElementById('descripcio').value = item.descripcio;
+            }
+
+            document.getElementById('formEditarItem').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Aquí puedes agregar el código para guardar los cambios
+                // y actualizar el item en el localStorage o enviarlo al servidor
+            });
+        });
+    </script>
+</body>
+</html>
