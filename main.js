@@ -16,8 +16,3 @@ let pcw2 = new ItemVisual()
 newItem.afegirItems(pcw2);
 
 newItem.renderItems();
-
-function aaa() {
-    return console.log("aaa");
-    
-}

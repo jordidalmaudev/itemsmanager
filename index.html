@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Gestor d'items</title>
 </head>
+
 <body>
-    
-    <div class="buscar">
-        <!-- TODO: Si l’usuari entra un text per filtrar el llistat d’ítems, aquests es filtraran en base al nom de l’ítem amb les prioritats definides a l’apartat de lògica de l’enunciat. -->
-        <input type="search" class="buscarInput">
-        <button>Buscar</button>
+
+    <div class="cabecera">
+        <div class="buscar">
+            <!-- TODO: Si l’usuari entra un text per filtrar el llistat d’ítems, aquests es filtraran en base al nom de l’ítem amb les prioritats definides a l’apartat de lògica de l’enunciat. -->
+            <input type="search" class="buscarInput">
+            <button>Buscar</button>
+        </div>
+        <div>
+            <a href="./addItem.html"><button class="agregarItem">Agregar Item</button></a>
+        </div>
     </div>
-    <div >
+    <div>
         <table id="items">
             <th>Miniatura</th>
             <th>Nombre</th>
@@ -30,6 +38,7 @@
     <script type="module" src="ItemVisual.js"></script>
     <script type="module" src="GestorItems.js"></script>
     <script type="module" src="main.js"></script>
-    
+
 </body>
+
 </html>

@@ -11,9 +11,9 @@ export class GestorItems {
         this.guardarItems();
     }
 
-    eliminarItems(nomItem) {
+    eliminarItems(idItem) {
         //eliminamos en memoria
-        let nouArray = items.filter(item => item.nom !== nomItem);
+        let nouArray = items?.filter(item => item.id !== idItem);
         this.items = nouArray;
         // guardamos en localstorage la data actualizada (eliminado)
         this.guardarItems();
@@ -73,7 +73,7 @@ export class GestorItems {
 
             // Agregar event listeners a los botones
             row.querySelector('.edit-btn').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
-            row.querySelector('.delete-btn').addEventListener('click', () => this.eliminarItem(item.id));
+            row.querySelector('.delete-btn').addEventListener('click', () => this.eliminarItems(item.id));
         });
     }
 }

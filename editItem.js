@@ -22,6 +22,5 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         gestor.modificarItems(item.id, novesDades);
         window.location.href = 'index.html';
-        
     });
 });
