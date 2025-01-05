@@ -1,5 +1,5 @@
 export class GestorItems {
-    items = []
+    items = [];
     noImg = "img/noImg.webp";
 
     constructor() {
@@ -11,12 +11,18 @@ export class GestorItems {
         this.guardarItems();
     }
 
-    eliminarItems(idItem) {
-        //eliminamos en memoria
-        let nouArray = items?.filter(item => item.id !== idItem);
-        this.items = nouArray;
-        // guardamos en localstorage la data actualizada (eliminado)
-        this.guardarItems();
+    //eliminar un item de this.items
+    eliminarItems(id) {
+        let i = this.items.findIndex((item) => item.id === id);
+        if (i !== -1) {
+            this.items.splice(i, 1);
+            this.guardarItems();
+            console.log(`Item eliminat:`, this.items);
+            alert('Item eliminado exitosamente.');
+            window.location.href = './index.html';
+        } else {
+            console.log(`Item amb la id "${id}" no trobat.`);
+        }
     }
 
     /**
@@ -84,4 +90,3 @@ export class GestorItems {
         }
     }
 }
-
