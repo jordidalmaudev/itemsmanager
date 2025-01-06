@@ -17,10 +17,10 @@ export class GestorItems {
 
     /**
      * Eliminar un item de this.items
-     * @param {string} nom 
+     * @param {string} idItem 
      */
-    eliminarItems(nom) {
-        let i = this.items.findIndex((item) => item.nom === nom);
+    eliminarItems(idItem) {
+        let i = this.items.findIndex((item) => item.id === idItem);
         if (i !== -1) {
             this.items.splice(i, 1); // Elimina 1 elemento a partir de la posición i
             this.guardarItems();
@@ -28,7 +28,7 @@ export class GestorItems {
             alert('Item eliminado exitosamente.');
             window.location.href = 'index.html';
         } else {
-            console.log(`Item amb la id "${nom}" no trobat.`);
+            console.log(`Item amb la id "${idItem}" no trobat.`);
         }
     }
 
@@ -56,20 +56,58 @@ export class GestorItems {
 
     /**
      * 
-     * @param {string} itemNom 
+     * @param {string} itemId 
      */
-    guardarItemYRedirigir(itemNom) {
-        let item = this.items.find(item => item.nom === itemNom);
+    guardarItemYRedirigir(itemId) {
+        let item = this.items.find(item => item.id === itemId);
         localStorage.setItem('itemAEditar', JSON.stringify(item));
         window.location.href = 'vistas/editItem.html';
     }
 
-    // renderizar item en el html id items desde el localstorage
-    renderItems() {
-        console.log(this.items);
-        
-        let items = JSON.parse(localStorage.getItem("items"));
+    /**
+     * 
+     * @param {string} palabraBuscada 
+     */
+    filtrarYRenderizar(palabraBuscada) {
+        if (!palabraBuscada) {
+            alert('Introduce una palabra para buscar');
+            this.renderItems();
+            return;
+        }
+
+        let items = JSON.parse(localStorage.getItem("items")) || [];
+        let resultados = [];
+
+        // si el nom de l’ítem és exactament igual a la paraula entrada
+        console.log("1");
+        resultados = items.filter(item => item.nom === palabraBuscada);
+
+        // si el nom de l’ítem comença per la paraula entrada
+        console.log("2");
+        resultados = resultados.concat(
+            items.filter(item => item.nom.startsWith(palabraBuscada) && !resultados.includes(item))
+        );
+
+        // si el nom de l’ítem conté la paraula entrada
+        console.log("3");
+        resultados = resultados.concat(
+            items.filter(item => item.nom.includes(palabraBuscada) && !resultados.includes(item))
+        );
+
+        this.renderItems(resultados);
+    }
+
+    // renderizar item en el html id items desde el localstorage y filtrados si fuera necesario
+    /**
+     * 
+     * @param {Array<string>} filtrados 
+     * @returns {void}
+     */
+    renderItems(filtrados = null) {
+        // filtrados no es null ni undefined, por lo que esta sera la lista que se renderiza (cuando se busque algo) mientras sera null y se trabajara con el localStorage
+        let items = filtrados || JSON.parse(localStorage.getItem("items")) || [];
         let table = document.getElementById("items");
+        table.innerHTML = ""; // Limpiar tabla
 
         if (this.items.length > 0) {
             items?.forEach(item => {
