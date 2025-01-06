@@ -10,27 +10,39 @@
 </head>
 
 <body>
-
+    <div class="container">
+        <header>
+            <h1 class="text-center">Gestor d'items</h1>
+        </header>
+    
     <div class="cabecera">
-        <div class="buscar">
-            <input id="buscador" type="search" class="buscarInput">
-            <button id="buscar">Buscar</button>
+        <div class=" input-group mb-3 buscar">
+            <input id="buscador" type="search" class="buscarInput form-contro" placeholder="Buscar...">
+            <button class="btn btn-primary" id="buscar" type="search" placeholder="Buscar...">Buscar</button>
         </div>
+        
         <div>
-            <a href="./vistas/addItem.html"><button class="agregarItem">Agregar Item</button></a>
+            <a href="./vistas/addItem.html"><button class="btn btn-success agregarItem">Agregar Item</button></a>
         </div>
     </div>
-    <div>
-        <table id="items">
-            <th>Miniatura</th>
-            <th>Nombre</th>
-            <th>Desc</th>
-            <th>Fecha Inicio</th>
-            <th>Fecha Modificacion</th>
-            <th>Acciones</th>
+    
+        <table class="table table-hover" id="items">
+            <thead class="table-dark">
+                <tr> 
+                    <th class="p-4">Miniatura</th>
+                    <th class="p-4">Nombre</th>
+                    <th class="p-4">Desc</th>
+                    <th class="p-4">Fecha Inicio</th>
+                    <th class="p-4">Fecha Modificación</th>
+                    <th class="p-4">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
         </table>
+    
     </div>
-
     <script type="module" src="./classes/Item.js"></script>
     <script type="module" src="./classes/ItemVisual.js"></script>
     <script type="module" src="./classes/GestorItems.js"></script>

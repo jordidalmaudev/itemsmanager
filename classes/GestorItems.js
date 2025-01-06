@@ -106,26 +106,26 @@ export class GestorItems {
     renderItems(filtrados = null) {
         // filtrados no es null ni undefined, por lo que esta sera la lista que se renderiza (cuando se busque algo) mientras sera null y se trabajara con el localStorage
         let items = filtrados || JSON.parse(localStorage.getItem("items")) || [];
-        let table = document.getElementById("items");
-        table.innerHTML = ""; // Limpiar tabla
+        const tbody = document.querySelector("#items tbody");
+        tbody.innerHTML = ""; // Limpiar tabla menos los encabezados
 
         if (this.items.length > 0) {
             items?.forEach(item => {
                 let row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>
+                    <td class="p-4">
                         <img src="${item.urlImage || this.noImg}" width="100" height="100">
                     </td>
-                    <td>${item.nom}</td>
-                    <td>${item.descripcio}</td>
-                    <td>${item.dataCreacio}</td>
-                    <td>${item.dataModificacio || ''}</td>
-                    <td>
+                    <td class="p-4">${item.nom}</td>
+                    <td class="p-4">${item.descripcio}</td>
+                    <td class="p-4">${item.dataCreacio}</td>
+                    <td class="p-4">${item.dataModificacio || ''}</td>
+                    <td class="p-4">
                         <button class="editar btn btn-primary">Editar</button>
                         <button class="eliminar btn btn-danger">Eliminar Item</button>
                     </td>
                 `;
-                table?.appendChild(row);
+                tbody?.appendChild(row);
 
                 // Agregar event listeners a los botones
                 row.querySelector('.editar').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
