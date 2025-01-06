@@ -26,7 +26,7 @@ document.getElementById('formEditarItem').addEventListener('submit', function (e
     let descripcio = document.getElementById('descripcio').value;
     let img = document.getElementById('img').value;
 
-    // Comprobar si el nombre ya existe en el array de gestor.items
+    // guardian, comprobar si el nombre ya existe en el array de items del gestor
     if (gestor.items.some(item => item.nom === nom)) {
         alert('El nombre del item ya existe. Por favor, elige otro nombre.');
         return;
