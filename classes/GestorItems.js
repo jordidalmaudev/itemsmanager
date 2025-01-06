@@ -121,15 +121,15 @@ export class GestorItems {
                     <td>${item.dataCreacio}</td>
                     <td>${item.dataModificacio || ''}</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
-                        <button class="delete-btn">${item.id}</button>
+                        <button class="editar btn btn-primary">Editar</button>
+                        <button class="eliminar btn btn-danger">Eliminar Item</button>
                     </td>
                 `;
                 table?.appendChild(row);
 
                 // Agregar event listeners a los botones
-                row.querySelector('.edit-btn').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
-                row.querySelector('.delete-btn').addEventListener('click', () => this.eliminarItems(item.id));
+                row.querySelector('.editar').addEventListener('click', () => this.guardarItemYRedirigir(item.id));
+                row.querySelector('.eliminar').addEventListener('click', () => this.eliminarItems(item.id));
             });
         } else {
             console.log("No hay items");
