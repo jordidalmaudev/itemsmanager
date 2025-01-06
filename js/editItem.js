@@ -9,6 +9,7 @@ document.getElementById('cancelar').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let item = JSON.parse(localStorage.getItem('itemAEditar'));
     if (item) {
+        document.getElementById('imgItem').src = item.urlImage || "../img/noImg.webp";
         document.getElementById('nom').value = item.nom;
         document.getElementById('descripcio').value = item.descripcio;
     }

@@ -6,22 +6,29 @@ export class GestorItems {
         this.items = JSON.parse(localStorage.getItem("items")) || [];
     }
 
+    /**
+     * 
+     * @param {Object} itemNou 
+     */
     afegirItems(itemNou) {
         this.items.push(itemNou);
         this.guardarItems();
     }
 
-    //eliminar un item de this.items
-    eliminarItems(id) {
-        let i = this.items.findIndex((item) => item.id === id);
+    /**
+     * Eliminar un item de this.items
+     * @param {string} nom 
+     */
+    eliminarItems(nom) {
+        let i = this.items.findIndex((item) => item.nom === nom);
         if (i !== -1) {
-            this.items.splice(i, 1);
+            this.items.splice(i, 1); // Elimina 1 elemento a partir de la posición i
             this.guardarItems();
             console.log(`Item eliminat:`, this.items);
             alert('Item eliminado exitosamente.');
-            window.location.href = './index.html';
+            window.location.href = 'index.html';
         } else {
-            console.log(`Item amb la id "${id}" no trobat.`);
+            console.log(`Item amb la id "${nom}" no trobat.`);
         }
     }
 
@@ -47,8 +54,12 @@ export class GestorItems {
         localStorage.setItem("items", JSON.stringify(this.items));
     }
 
-    guardarItemYRedirigir(itemId) {
-        let item = this.items.find(item => item.id === itemId);
+    /**
+     * 
+     * @param {string} itemNom 
+     */
+    guardarItemYRedirigir(itemNom) {
+        let item = this.items.find(item => item.nom === itemNom);
         localStorage.setItem('itemAEditar', JSON.stringify(item));
         window.location.href = 'vistas/editItem.html';
     }
@@ -84,7 +95,6 @@ export class GestorItems {
             });
         } else {
             console.log("No hay items");
-            
             table.innerHTML = `<h1>No hay items</h1>`;
             return;
         }

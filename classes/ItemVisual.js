@@ -16,6 +16,6 @@ export class ItemVisual extends Item {
     constructor(nom = "Item visual por defecto", descripcio = "Item visual descripcio por defecto", urlImage) {
         super(nom, descripcio);
         this.urlImage = urlImage;
-        this.id = "visual-" + this.id;
+        this.id = "v" + this.id;
     }
 }

@@ -24,9 +24,9 @@ export class Item {
      * 
      * @returns {string} id
      */
-     generadorId() {
+    generadorId() {
         const id = Date.now() + '-' + Math.floor(Math.random() * 1000);
-        return id;
+        return "i" + id;
     }
     
     /**

@@ -22,17 +22,26 @@ document.getElementById('categoria').addEventListener('change', function () {
 
 document.getElementById('formEditarItem').addEventListener('submit', function (event) {
     event.preventDefault();
+    let nom = document.getElementById('nom').value;
+    let descripcio = document.getElementById('descripcio').value;
+    let img = document.getElementById('img').value;
+
+    // Comprobar si el nombre ya existe en el array de gestor.items
+    if (gestor.items.some(item => item.nom === nom)) {
+        alert('El nombre del item ya existe. Por favor, elige otro nombre.');
+        return;
+    }
+
     if (tipusItem === "itemVisual") {
-        let nuevoItem = new ItemVisual(document.getElementById('nom').value, document.getElementById('descripcio').value, document.getElementById('img').value);
+        let nuevoItem = new ItemVisual(nom, descripcio, img);
         gestor.afegirItems(nuevoItem);
         alert('Item Visual agregado exitosamente.');
         window.location.href = '../index.html';
     } else {
-        let nuevoItem = new Item(document.getElementById('nom').value, document.getElementById('descripcio').value);
+        let nuevoItem = new Item(nom, descripcio);
         gestor.afegirItems(nuevoItem);
         alert('Item agregado exitosamente.');
         window.location.href = '../index.html';
-        
     }
 });
 
