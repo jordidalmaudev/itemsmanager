@@ -2,6 +2,7 @@ export class GestorItems {
     items = [];
     noImg = "img/noImg.webp";
 
+
     constructor() {
         this.items = JSON.parse(localStorage.getItem("items")) || [];
     }
@@ -34,11 +35,11 @@ export class GestorItems {
 
     /**
     * 
-    * @param {string} id
+    * @param {string} nom
     * @param {Item} novesDades
     */
-    modificarItems(id, novesDades) {
-        let i = this.items.findIndex((item) => item.id === id);
+    modificarItems(nom, novesDades) {
+        let i = this.items.findIndex((item) => item.nom === nom);
         if (i !== -1) {
             if (novesDades.nom) this.items[i].nom = novesDades.nom;
             if (novesDades.descripcio) this.items[i].descripcio = novesDades.descripcio;
@@ -46,7 +47,7 @@ export class GestorItems {
             this.guardarItems();
             console.log(`Item modificat:`, this.items[i]);
         } else {
-            console.log(`Item amb la id "${id}" no trobat.`);
+            console.log(`Item amb la id "${nom}" no trobat.`);
         }
     }
 
@@ -104,6 +105,7 @@ export class GestorItems {
      * @returns {void}
      */
     renderItems(filtrados = null) {
+
         // filtrados no es null ni undefined, por lo que esta sera la lista que se renderiza (cuando se busque algo) mientras sera null y se trabajara con el localStorage
         let items = filtrados || JSON.parse(localStorage.getItem("items")) || [];
         const tbody = document.querySelector("#items tbody");
@@ -133,7 +135,7 @@ export class GestorItems {
             });
         } else {
             console.log("No hay items");
-            tbody.innerHTML = `<h1>No hay items</h1>`;
+            tbody.innerHTML = `<h1 class="mt-4">No hay items.<a href="./vistas/addItem.html">Crea uno!</a></h1>`;
             return;
         }
     }
