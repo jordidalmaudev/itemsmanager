@@ -35,7 +35,7 @@ export class GestorItems {
     /**
     * 
     * @param {string} id
-    * @param {Object} novesDades
+    * @param {Item} novesDades
     */
     modificarItems(id, novesDades) {
         let i = this.items.findIndex((item) => item.id === id);
@@ -133,7 +133,7 @@ export class GestorItems {
             });
         } else {
             console.log("No hay items");
-            table.innerHTML = `<h1>No hay items</h1>`;
+            tbody.innerHTML = `<h1>No hay items</h1>`;
             return;
         }
     }
