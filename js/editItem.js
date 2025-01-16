@@ -21,7 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
             descripcio: document.getElementById('descripcio').value,
             dataModificacio: new Date().toLocaleString()
         };
-        gestor.modificarItems(item.id, novesDades);
-        window.location.href = '../index.html';
+
+        let items = JSON.parse(localStorage.getItem('items')) || [];
+        let itemExists = items.some(existingItem => existingItem.nom === novesDades.nom);
+
+        if (itemExists) {
+            alert('No se puede poner ya que ya existe un item con el mismo nombre.');
+        } else {
+            gestor.modificarItems(item.id, novesDades);
+            window.location.href = '../index.html';
+        }
     });
 });
